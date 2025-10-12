@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Reviews</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* navbar */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      --padding:14px;
+    }
+header{
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        padding: 10px;
+        background: #e1edf1;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .rateland {
+      padding: 11px;
+      font-size: 20px;
+      font-family:'Poppins',sans-serif;
+      color: #260e54;
+    }
+    header nav a {
+      padding: 11px;
+      margin: 0 15px;
+      text-decoration: none;
+      color: #825c5c;
+      font-size: 17px;
+      font-weight: 700;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .navbar a:hover {
+      padding: 11px;
+      background-color: #ddd;
+      color: rgb(86, 68, 68);
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .navbar-search-container {
+      width: 300px;
+      display: flex;
+      align-items: center;
+      background: #f2f4f6;
+      border-radius: 20px;
+      padding: 10px 10px 10px;
+      margin-right: auto;
+    }
+    .navbar-search-input {
+      font-size: 16px;
+      font-family: 'Lexend', sans-serif;
+      color: #333;
+      margin-left: var(--padding);
+      outline: none;
+      border: none;
+      background: transparent;
+    }
+
+    /* categories dropdown menu */
+    .dropbtn {
+      color: #825c5c;
+      padding: 11px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      background: none;
+      font-weight: 700;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown:hover .dropbtn {
+      background-color: #94c096;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+      }
+      .rateland {
+        font-size: 22px;
+        padding: 8px;
+      }
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .navbar-search-container {
+        width: 100%;
+        order: 3;
+        margin: 0;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        order: 2;
+      }
+      .nav-links a {
+        padding: 8px 12px;
+        margin: 0 2px;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+      .dropdown {
+        position: relative;
+      }
+      .dropdown-content {
+        top: 100%;
+        left: 0;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1000;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .dropdown-content a {
+        font-size: 14px;
+      }}
+            .btn {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        order: 1;
+      }
+      .btn button {
+        width: 80px;
+        margin: 0;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 10px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    
+    .button {
+  background-color: #e5e7d8; /* soft light background */
+  color: #5a4f4f;            /* soft text color */
+  border: none;              /* remove border */
+  border-radius: 12px;       /* rounded corners */
+  padding: 10px 20px;        /* padding for size */
+  font-weight: 500;          /* medium bold text */
+  font-family: sans-serif;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+  background-color: #dcded0;
+  transform: scale(1.02);
+}
+
+.button.active {
+  font-weight: bold;
+  color: black;
+}
+
+    .btn-login {
+      background-color: rgb(218, 222, 204);
+      color: #6f5e5e;   
+    }
+    .btn-signup {
+      background-color: rgb(218, 222, 204);
+      color: #6f5e5e;
+    }
+
+    body {
+      background: #f4f4fa;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .review-container {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .review-card {
+      display: flex;
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .review-info {
+      flex: 1;
+      min-width: 250px;
+    }
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .brand-header img {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+    .stars {
+      color: #ffc107;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .editable-title,
+    .editable-message {
+      margin: 6px 0;
+      word-break: break-word;
+    }
+    .editable-title {
+      font-weight: 600;
+      font-size: 17px;
+    }
+    .editable-message {
+      font-size: 15px;
+      color: #444;
+    }
+    .media-preview img,
+    .media-preview video {
+      max-width: 160px;
+      max-height: 120px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .action-buttons {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .action-buttons button {
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .edit-btn {
+      background-color: #e0e0e0;
+    }
+    .delete-btn {
+      background-color: #ffe1e1;
+      color: #c00;
+    }
+    .no-reviews {
+      text-align: center;
+      color: #666;
+      font-size: 16px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="rateland">RateLand</div>
+    <nav class="navbar" id="navbar">
+      <div class="navbar-search-container">
+        <span class="search-icon material-symbols-outlined"></span>
+        <input type="search" class="navbar-search-input" placeholder="search here">
+      </div>
+      <div class="nav-links">
+        <a class="active" href="mainhome.html">HOME</a>
+        <a href="myreviews.html">My Reviews</a>
+        <a href="writearev.html">Write A Review</a>
+        <div class="dropdown">
+          <button onclick="window.location.href='categories.html'" class="dropbtn">Categories</button>
+          <div class="dropdown-content">
+            <a href="categories.html">Clothing</a>
+            <a href="categories.html">Services</a>
+          </div>
+        </div>
+        <a href="help.html">Help</a>
+      </div>
+    </nav>
+    <div class="btn">
+      <button onclick="window.location.href='login.html'" class="btn-login">Log in</button>
+      <button onclick="window.location.href='signup.html'" class="btn-signup">Sign up</button>
+    </div>
+  </header>
+
+  <h2>My Reviews</h2>
+  <div class="review-container" id="reviewContainer"></div>
+
+  <script>
+    const container = document.getElementById("reviewContainer");
+
+    function getReviews() {
+      return JSON.parse(localStorage.getItem("myReviews") || "[]");
+    }
+
+    function saveReviews(data) {
+      localStorage.setItem("myReviews", JSON.stringify(data));
+    }
+
+    function renderReviews() {
+      const reviews = getReviews();
+      container.innerHTML = "";
+
+      if (reviews.length === 0) {
+        container.innerHTML = "<p class='no-reviews'>No reviews yet.</p>";
+        return;
+      }
+
+      reviews.forEach((review, i) => {
+        const card = document.createElement("div");
+        card.className = "review-card";
+
+        const stars = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+
+        let mediaHTML = "";
+        if (review.file) {
+          if (review.file.startsWith("data:video")) {
+            mediaHTML = `<video controls src="${review.file}"></video>`;
+          } else {
+            mediaHTML = `<img src="${review.file}" alt="Uploaded Image">`;
+          }
+        }
+
+        card.innerHTML = `
+          <div class="review-info">
+            <div class="brand-header">
+              <img src="${review.logo || '#'}" alt="${review.brand}">
+              <strong>${review.brand}</strong>
+            </div>
+            <div class="stars">${stars}</div>
+            <div class="editable-title" contenteditable="false">${review.title}</div>
+            <div class="editable-message" contenteditable="false">${review.message}</div>
+            <div class="action-buttons">
+              <button class="edit-btn">📝 Edit</button>
+              <button class="delete-btn">🗑 Delete</button>
+            </div>
+          </div>
+          <div class="media-preview">${mediaHTML}</div>
+        `;
+
+        const editBtn = card.querySelector(".edit-btn");
+        const deleteBtn = card.querySelector(".delete-btn");
+
+        editBtn.addEventListener("click", () => window.editReview(i, editBtn));
+        deleteBtn.addEventListener("click", () => window.deleteReview(i));
+
+        container.appendChild(card);
+      });
+    }
+
+    window.editReview = function(index, btn) {
+      const reviews = getReviews();
+      const card = btn.closest(".review-card");
+      const title = card.querySelector(".editable-title");
+      const message = card.querySelector(".editable-message");
+
+      const editing = btn.textContent.includes("Save");
+
+      if (editing) {
+        reviews[index].title = title.textContent.trim();
+        reviews[index].message = message.textContent.trim();
+        saveReviews(reviews);
+        title.contentEditable = false;
+        message.contentEditable = false;
+        btn.innerHTML = "📝 Edit";
+      } else {
+        title.contentEditable = true;
+        message.contentEditable = true;
+        title.focus();
+        btn.innerHTML = "💾 Save";
+      }
+    };
+
+    window.deleteReview = function(index) {
+      const reviews = getReviews();
+      if (confirm("Delete this review?")) {
+        reviews.splice(index, 1);
+        saveReviews(reviews);
+        renderReviews();
+      }
+    };
+
+    renderReviews();
+  </script>
+</body>
+</html>

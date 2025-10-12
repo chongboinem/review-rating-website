@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Clothing - Rateland</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding-top: 70px; /* for sticky navbar */
+    }
+
+    /* Navbar */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        --padding:14px;
+    }
+    header{
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        padding: 10px;
+        background: #e1edf1;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .rateland{
+        padding: 11px;
+        font-size: 20px;
+        font-family:'Poppins',sans-serif;
+        color: #260e54;
+    }
+    header nav a{
+      
+        padding: 11px;
+        margin: 0 15px;
+        text-decoration: none;
+        color: #825c5c;
+        font-size: 17px;
+        font-weight: 700;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        
+    }
+    .navbar a:hover {
+        padding: 11px;
+        background-color: #ddd;
+        color: rgb(86, 68, 68);
+    }
+
+    .nav-links{
+        display: flex;
+        gap: 20px;
+        }
+    .search-container{
+        width: 300px;
+        display: flex;
+        align-items: center;
+        background: #f2f4f6;
+        border-radius: 20px;
+        padding: 10px 10px 10px;
+        margin-right: auto;
+    }
+    .search-input{
+        font-size: 16px;
+        font-family: 'Lexend', sans-serif;
+        color: #333;
+        margin-left: var(--padding);
+        outline: none;
+        border: none;
+        background: transparent;
+    }
+    
+    /*categories dropdown menu*/
+    .dropbtn {
+      color: #825c5c;
+      padding: 11px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      background: none;
+      font-weight: 700;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #94c096;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+      }
+
+      .rateland {
+        font-size: 22px;
+        padding: 8px;
+      }
+
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .search-container {
+        width: 100%;
+        order: 3;
+        margin: 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        order: 2;
+      }
+
+      .nav-links a {
+        padding: 8px 12px;
+        margin: 0 2px;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1000;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }}
+      .btn {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        order: 1;
+      }
+    .btn button{
+        width: 100px;
+        margin-left: 15px;
+        padding: 11px;
+        border-radius: 10px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    .btn button:hover{
+        color: #000;
+    }
+    .btn-login{
+        background-color: rgb(218, 222, 204);
+        color: #6f5e5e;   
+    }
+    .btn-signup{
+        background-color: rgb(218, 222, 204);
+        color: #6f5e5e;
+    }
+    /*navbar ends here*/
+
+    /*2nd nav */.navbar1 {
+      position: fixed;
+      top: 0; /* Adjust for your main header height */
+      left: 0;
+      height: 100vh;
+  width: 110px;
+  background-color: #ffffff;
+  border-right: 4px solid #c4d1c9;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.navbar1 a {
+  font-size: 14px;
+  color: #4a6b74;
+  text-decoration: none;
+  font-weight: 200;
+  padding: 10px 15px;
+  width: 100%;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.navbar1 a:hover {
+  text-decoration: underline;
+}
+
+
+/*filter sort design stuff*/
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.filter-bar input[type="text"],
+.filter-bar select {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.filter-bar input[type="text"]:focus,
+.filter-bar select:focus {
+  outline: none;
+  border-color: #b2d8d8; /* Light pastel blue border */
+  box-shadow: 0 0 5px rgba(178, 216, 216, 0.5);
+}
+
+.filter-bar input[type="text"] {
+  background-color: #f7fffe; /* pastel blue */
+}
+
+.filter-bar select:nth-of-type(1) {
+  background-color: #fcfff7; /* pastel green */
+}
+
+.filter-bar select:nth-of-type(2) {
+  background-color: #f2fff9; /* pastel brown */
+}
+/*end*/
+/* Optional: push main content away from the sidebar */
+body {
+  padding-left: 110px; /* Matches navbar1 width */
+}
+    h1{
+      text-align: center;
+      color: #333;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 3rem;
+      border-bottom: 2px solid #4CAF50;
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    .controls {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .controls input, .controls select {
+      padding: 0.5rem;
+      margin: 0 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .product-grid {
+      display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Exactly 3 items per row */
+  gap: 2rem;
+  padding: 0 1rem;
+    }
+
+    .product {
+      
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: scale(1.02);
+    }
+
+    .product img {
+      width: 100%;
+  height: auto; /* Let the image height adjust naturally */
+  object-fit: contain; /* Ensure full image is visible */
+  border-radius: 8px;
+  background-color: #f0f8ff;
+  max-height: 250px; /* or try 250px */
+    }
+
+    .product a {
+      text-decoration: none;
+      color: #3c833e;
+      font-weight: bold;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .back {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .back a {
+      color: #555;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .back a:hover{
+        color: #a38d8d;
+        text-decoration: underline;
+    }
+
+    section {
+      margin-top: 4rem;
+    }
+    
+  </style>
+</head>
+<body>
+    
+    <header>
+        <div class="rateland">RateLand</div>
+        <nav class="navbar" id="navbar">
+            <div class="search-container">
+                <span class="search-icon material-symbols-outlined"></span>
+                <input type="search" class="search-input" placeholder="search here">
+            </div>
+            <div class="nav-links">
+                <a class="active" href="mainhome.html">HOME</a>
+                <a href="myreviews.html">My Reviews</a>
+                <a href="writearev.html">Write A Review</a>
+                <div class="dropdown">
+                    <button onclick="window.location.href='categories.html'" class="dropbtn">Categories</button>
+                    <div class="dropdown-content">
+                        <a href="#clothes">Clothing</a>
+                        <a href="#service">Services</a>
+                    </div>
+                </div>
+                <a href="help.html">Help</a>
+            </div>
+        </nav>
+        <div class="btn">
+            <button onclick="window.location.href='login.html'" class="btn-login">Log in</button>
+            <button onclick="window.location.href='signup.html'" class="btn-signup">Sign up</button>
+        </div>
+    </header>
+
+  <!-- Navbar second -->
+  <div class="navbar1">
+    <div>
+      <a href="#clothes">Clothing</a><br><HR size="200" color="white">
+      <a href="#service">Services</a><br><HR size="200" color="white">
+    </div>
+  </div>
+
+  <h1>Categories</h1>
+
+  <!-- Sort and Filter Controls -->
+  <div class="filter-bar">
+  <input type="text" id="filterInput" placeholder="Search for products..." oninput="filterProducts()">
+
+  <select aria-label="sort" id="sortSelect" onchange="sortProducts()">
+    <option value="az">Sort A–Z</option>
+    <option value="za">Sort Z–A</option>
+  </select>
+
+  <select aria-label="filter" id="categoryFilter" onchange="applyCategoryFilter()">
+    <option value="all">All</option>
+    <option value="clothing">Clothing</option>
+    <option value="services">Services</option>
+  </select>
+</div>
+
+
+  <!-- Clothing Section -->
+<section id="clothes">
+  <h1>Clothing</h1>
+  <div class="product-grid" data-name="Clothing" data-section="dresses" data-category="dresses">
+    <div class="product" data-name="Blue midi flowy dress">
+      <img src="https://i.pinimg.com/736x/8b/59/1b/8b591b3c2403e01412f7e4af0e299e9b.jpg" alt="clothing">
+      <h4 onclick="toggleReviews(this)">blue midi flowy dress</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐ So elegant!</div>
+        <div class="review">⭐⭐⭐ A little too sheer for me but good overallS.</div>
+      </div>
+    </div>
+    <div class="product" data-name="off-white midi dress">
+      <img src="https://i.pinimg.com/736x/7e/3c/77/7e3c77fba5f3258df7b32afb6fc01a14.jpg" alt="clothing">
+      <h4 onclick="toggleReviews(this)">off-white midi dress</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐⭐ SO IN LOVE! </div>
+        <div class="review">⭐⭐ Came in the wrong size so it's a little tight but manageable.</div>
+      </div>
+    </div>
+    <div class="product" data-name="white black mini skirt">
+      <img src="https://i.pinimg.com/736x/7b/db/fe/7bdbfe89605c32d70b68e4c6dfa6309d.jpg" alt="clothing">
+      <h4 onclick="toggleReviews(this)">white black mini skirt</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐ Cute and comfy!</div>
+      </div>
+    </div>
+    <div class="product" data-name="white lily minimalist maxi dress">
+      <img src="https://i.pinimg.com/736x/77/99/1c/77991c3d3b09ce5310c993645dfc6dd1.jpg" alt="clothing">
+      <h4 onclick="toggleReviews(this)">white lily minimalist maxi dress </h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐⭐ Fits perfectly!</div>
+        <div class="review">⭐⭐⭐ Amazing dress but it came in a colour that I didn't choose.</div>
+      </div>
+    </div>
+    <div class="product" data-name="blue 2-piece dress set">
+      <img src="https://i.pinimg.com/736x/c7/6c/43/c76c431686bf69729828769f659b2ed4.jpg" alt="clothing">
+      <h4 onclick="toggleReviews(this)">blue 2-piece dress set</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐ So cutesy!</div>
+        <div class="review">⭐⭐⭐⭐⭐ Perfect for mee.</div>
+      </div>
+    </div>
+    <div class="product" data-name="brown coffee jacket">
+      <img src="https://i.pinimg.com/736x/b8/b6/e7/b8b6e7e82e3cfc16caf9a7f235bc5ab5.jpg" alt="clothing">
+      <h4 onclick="toggleReviews(this)">brown coffee jacket</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐ Fits perfecting but is a bit heavy.</div>
+      </div>
+    </div>
+    <div class="product" data-name="blue white striped mini dress">
+      <img src="https://i.pinimg.com/736x/1d/c1/bc/1dc1bcd45d81106a011754c62f5bb1aa.jpg" alt="clothing">
+      <h4 onclick="toggleReviews(this)">blue white striped mini dress</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐⭐ makes me feel like a garden princess :3 !</div>
+        <div class="review">⭐⭐⭐⭐⭐ so adorable everything is perfect, will definitely order it again in a different colour.</div>
+      </div>
+    </div>
+    <div class="product" data-name="black button mini dress">
+      <img src="https://i.pinimg.com/736x/0f/44/14/0f441445e802991674dafd22b7ca63bc.jpg" alt="clothing">
+      <h4 onclick="toggleReviews(this)">black button mini dress</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐ i love the fitting</div>
+        <div class="review">⭐⭐⭐ cute but unlike the photo, buttons were the white in colour.</div>
+      </div>
+    </div>
+    <div class="product" data-name="white mini dress">
+      <img src="https://i.pinimg.com/736x/e3/65/49/e3654962db5f8980b2c830175d7618cb.jpg" alt="clothing">
+      <h4 onclick="toggleReviews(this)">white mini dress </h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐ EXACTLY WHAT I WANTED!!</div>
+        <div class="review">⭐⭐⭐ not bad but not good.</div>
+      </div>
+    <!-- Add similar blocks for other clothing items -->
+  </div>
+</section>
+
+
+<!-- Services Section -->
+<section id="service">
+  <h1>Services</h1>
+  <div class="product-grid" data-name="Services" data-section="tops" data-category="tops">
+    <div class="product"  data-name="Netflix movie streaming series dramas sports documentary">
+      <img src="https://i.pinimg.com/736x/dd/40/5a/dd405adba73f93b061644e08aca783c3.jpg" alt="service">
+      <h4 onclick="toggleReviews(this)">Netflix</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐ Love the films.</div>
+      </div>
+    </div>
+    <div class="product" data-name="Spotify stream music artist ">
+      <img src="https://i.pinimg.com/736x/0f/30/0d/0f300da5c3b0cce0718db1590342f6ee.jpg" alt="service">
+      <h4 onclick="toggleReviews(this)">Spotify</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐ So much ads without premium and the monthly subscription price keeps going up.</div>
+      </div>
+    </div>
+    <div class="product" data-name="Amazon prime video movie watch sports serials dramas">
+      <img src="https://i.pinimg.com/736x/b2/27/0d/b2270d98e6721579ec1202574a1f1d2c.jpg" alt="service">
+      <h4 onclick="toggleReviews(this)">Amazon prime video</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐ Not bad.</div>
+      </div>
+    </div>
+    <div class="product" data-name="Urban Company services cleaning maintenance plumbing servicing ">
+      <img src="https://i.pinimg.com/736x/dd/d8/f4/ddd8f4461e91b0978aac1cb07d886289.jpg" alt="service">
+      <h4 onclick="toggleReviews(this)">Urban Company</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐⭐ Staff was excellent.</div>
+      </div>
+    </div>
+    <div class="product" data-name="Zomato delivery food ">
+      <img src="https://i.pinimg.com/736x/e6/2e/4b/e62e4bcb325a106666623c6d1189167b.jpg" alt="service">
+      <h4 onclick="toggleReviews(this)">Zomato</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐ Convenient but the price hike is insane. Concerned for the restaurants. </div>
+      </div>
+    </div>
+    <div class="product" data-name="Grammarly english correction ">
+      <img src="https://i.pinimg.com/736x/fb/e9/55/fbe955edecd9f3543d55fc231a62d3f5.jpg" alt="service">
+      <h4 onclick="toggleReviews(this)">Grammarly</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐⭐ It helps me form proper sentences even though English isn't my first language. </div>
+      </div>
+    </div>
+    <div class="product" data-name="Swiggy delivery food">
+      <img src="https://i.pinimg.com/736x/a2/79/29/a279297e3c4dc0858e7ec4b8b4cd0a8a.jpg" alt="service">
+      <h4 onclick="toggleReviews(this)">Swiggy</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐ Great.</div>
+      </div>
+    </div>
+    <div class="product" data-name="Canva editing">
+      <img src="https://i.pinimg.com/736x/b2/aa/b5/b2aab56866146cf1edb669a17570654d.jpg" alt="service">
+      <h4 onclick="toggleReviews(this)">Canva</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐⭐⭐⭐ Love it. </div>
+      </div>
+    </div>
+
+    <div class="product" data-name="Uber ride cab bike book">
+      <img src="https://i.pinimg.com/736x/23/cb/51/23cb51fdd17624d203ddb2033ff993db.jpg" alt="service">
+      <h4 onclick="toggleReviews(this)">Uber</h4>
+      <div class="reviews" style="display: none;">
+        <div class="review">⭐⭐ It used to be convenient.</div>
+      </div>
+    </div>
+    <!-- Add similar blocks for other services -->
+  </div>
+</section>
+  <div class="back">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+  <!-- JavaScript for sorting and filtering -->
+  <script>
+ function sortProducts() {
+  const sortType = document.getElementById("sortSelect").value;
+  const allGrids = document.querySelectorAll(".product-grid");
+
+  allGrids.forEach(grid => {
+    const products = Array.from(grid.children);
+    products.sort((a, b) => {
+      const nameA = a.getAttribute("data-name").toLowerCase();
+      const nameB = b.getAttribute("data-name").toLowerCase();
+
+      // Split into category and number
+      const matchA = nameA.match(/^([a-z]+)\s*(\d+)$/);
+      const matchB = nameB.match(/^([a-z]+)\s*(\d+)$/);
+
+      if (!matchA || !matchB) return nameA.localeCompare(nameB); // fallback
+
+      const [ , catA, numA ] = matchA;
+      const [ , catB, numB ] = matchB;
+
+      if (catA !== catB) {
+        return sortType === "az"
+          ? catA.localeCompare(catB)
+          : catB.localeCompare(catA);
+      } else {
+        return sortType === "az"
+          ? parseInt(numA) - parseInt(numB)
+          : parseInt(numB) - parseInt(numA);
+      }
+    });
+
+    products.forEach(product => grid.appendChild(product));
+  });
+}
+
+
+  function filterProducts() {
+    const filter = document.getElementById('filterInput').value.toLowerCase();
+    const allProducts = document.querySelectorAll('.product');
+    let anyMatch = false;
+
+    allProducts.forEach(product => {
+      const name = product.dataset.name.toLowerCase();
+      const visible = name.includes(filter);
+      product.style.display = visible ? 'block' : 'none';
+      if (visible) anyMatch = true;
+    });
+
+    // Show message if no products match
+    let msg = document.getElementById('no-results');
+    if (!msg) {
+      msg = document.createElement('p');
+      msg.id = 'no-results';
+      msg.style.textAlign = 'center';
+      msg.style.color = 'gray';
+      document.body.appendChild(msg);
+    }
+    msg.textContent = anyMatch ? '' : 'No products found matching your search.';
+  }
+
+    // Toggle review visibility
+
+  function toggleReviews(header) {
+    const reviews = header.nextElementSibling;
+    reviews.style.display = reviews.style.display === 'block' ? 'none' : 'block';
+  }
+  function applyCategoryFilter() {
+  const selectedCategory = document.getElementById('categoryFilter').value;
+  const productSections = document.querySelectorAll('.product-grid');
+
+  productSections.forEach(section => {
+    const category = section.dataset.category; // e.g., 'clothing', 'food', etc.
+    section.style.display = (selectedCategory === 'all' || selectedCategory === category) ? 'block' : 'none';
+  });
+}
+  // Show/hide reviews on product name click
+  function toggleReviews(element) {
+    const reviewBox = element.nextElementSibling;
+    if (reviewBox) {
+      reviewBox.style.display = reviewBox.style.display === "none" ? "block" : "none";
+    }
+  }
+
+  // Filter products by text input
+  function filterProducts() {
+    const input = document.getElementById("filterInput").value.toLowerCase();
+    const allProducts = document.querySelectorAll(".product");
+
+    allProducts.forEach(product => {
+      const name = product.getAttribute("data-name").toLowerCase();
+      product.style.display = name.includes(input) ? "block" : "none";
+    });
+  }
+
+  // Sort products A–Z or Z–A
+  function sortProducts() {
+    const sortType = document.getElementById("sortSelect").value;
+    const allGrids = document.querySelectorAll(".product-grid");
+
+    allGrids.forEach(grid => {
+      const products = Array.from(grid.children);
+      products.sort((a, b) => {
+        const nameA = a.getAttribute("data-name").toLowerCase();
+        const nameB = b.getAttribute("data-name").toLowerCase();
+        if (sortType === "az") return nameA.localeCompare(nameB);
+        else return nameB.localeCompare(nameA);
+      });
+      products.forEach(product => grid.appendChild(product));
+    });
+  }
+
+  // Show products based on selected category
+  function applyCategoryFilter() {
+    const selected = document.getElementById("categoryFilter").value;
+    const sections = {
+      clothing: document.querySelector("#dresses .product-grid"),
+      food: document.querySelector("#bottoms .product-grid"),
+      services: document.querySelector("#tops .product-grid"),
+    };
+
+    for (let key in sections) {
+      if (selected === "all" || selected === key) {
+        sections[key].style.display = "grid"; // or "flex" if you're using flexbox
+      } else {
+        sections[key].style.display = "none";
+      }
+    }
+  }
+</script>
+
+
+
+</body>
+</html>

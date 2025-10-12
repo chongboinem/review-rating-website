@@ -1,0 +1,95 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Page</title> 
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <style> 
+
+    .rateland{
+        text-align: center;
+        padding: 11px;
+        font-size: 20px;
+        font-family: 'Poppins',sans ;
+        color: #260e54;
+    }
+        body { 
+        margin: 0; 
+        padding: 0; 
+        font-family: Arial, sans-serif; 
+        background: #d9e7ed;
+     }
+     .login-box {
+        width: 300px;
+        background: #ffffff;
+        padding: 30px 25px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        margin: 100px auto;
+    }
+
+    .login-box h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #99d7ac;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        background-color: #f3f3f3;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+.login-box .actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.login-box input[type="submit"] {
+  background-color: #b3cddc;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.login-box input[type="submit"]:hover {
+  background-color: #cadbe6;
+}
+.login-box a {
+  font-size: 12px;
+  color: #777;
+  text-decoration: none;
+}
+
+.login-box a:hover {
+  text-decoration: underline;
+  color: #ebc3c3;
+}
+</style> 
+</head> 
+<body> 
+    <div class="login-box"> 
+        <h1 class="rateland">RateLand</h1>
+        <h2>Log In</h2> 
+        <form> 
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required> 
+            <div class="actions"> <input type="submit" value="Login">
+                <a href="#">Forgot Password?</a> 
+                <a href="mainhome.html">Home</a>
+            </div> 
+        </form> 
+    </div> 
+</body> 
+</html>
