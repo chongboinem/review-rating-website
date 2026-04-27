@@ -1,9 +1,8 @@
 # review-rating-website
-2nd semester mini project 
 
-A Review and Rating website 
+Review and Rating website 
 
-Overview: A platform where users can review and rate products or services.
+**Overview**: A platform where users can review and rate products or services.
 
 Steps:
 1. Develop a homepage showcasing recent reviews.
